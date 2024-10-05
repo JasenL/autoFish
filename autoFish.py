@@ -19,9 +19,9 @@ def get_color(x, y):
 
 
 def run(pos):
+    print("开始钓鱼")
     pyautogui.FAILSAFE = True  # 鼠标移动左上角终止程序
     sleep(10)
-    print("开始钓鱼")
     previous_color = get_color(pos.x, pos.y)
     c = 0
     s = 0
