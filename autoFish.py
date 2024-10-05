@@ -70,7 +70,7 @@ if __name__ == '__main__':
     sleep(0.5)
 
     # if not 'pos' in locals():
-    print("请先按alt选点,然后按ctrl 10s后开始")
+    print("请先按alt选颜色点,然后按ctrl 10s后开始")
     keyboard.wait('alt')
     pos = getPos()
     print("获取点位为：" + '{}'.format(pos))
