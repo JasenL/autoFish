@@ -24,6 +24,7 @@ def run(pos):
     print("开始钓鱼")
     previous_color = get_color(pos.x, pos.y)
     c = 0
+    s = 0
     while judge != 0:
         k = random.randint(150, 180)
         c = c + 1
@@ -36,7 +37,9 @@ def run(pos):
             sim = ColourDistance(previous_color, color)
             if sim > 200:
                 k = 0
-                print('tuple(np.array(' + '{}'.format(color) + ')/255)-' + '{}'.format(pos))
+                s = s + 1
+                print("成功" + str(c) )
+                # print('tuple(np.array(' + '{}'.format(color) + ')/255)-' + '{}'.format(pos))
                 sleep((random.randint(1, 2) + random.random()) / 2)
                 keyboard.press_and_release('2')
 
