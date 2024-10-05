@@ -21,9 +21,13 @@ def get_color(x, y):
 def run(pos):
     pyautogui.FAILSAFE = True  # 鼠标移动左上角终止程序
     sleep(10)
+    print("开始钓鱼")
     previous_color = get_color(pos.x, pos.y)
+    c = 0
     while judge != 0:
         k = random.randint(150, 180)
+        c = c + 1
+        print("第" + str(c) + "次钓鱼")
         keyboard.press_and_release('1')
         sleep(3)
         while judge != 0 and k > 0:
@@ -33,10 +37,10 @@ def run(pos):
             if sim > 200:
                 k = 0
                 print('tuple(np.array(' + '{}'.format(color) + ')/255)-' + '{}'.format(pos))
-                sleep(random.randint(1, 2) + random.random())
+                sleep((random.randint(1, 2) + random.random()) / 2)
                 keyboard.press_and_release('2')
 
-            sleep(0.2)
+            sleep(0.13)
         sleep(random.randint(1, 4) + random.random())
 
 
