@@ -23,9 +23,11 @@ def run(pos):
     sleep(10)
     previous_color = get_color(pos.x, pos.y)
     while judge != 0:
-        k = 1
+        k = random.randint(150, 180)
         keyboard.press_and_release('1')
-        while judge != 0 and k == 1:
+        sleep(3)
+        while judge != 0 and k > 0:
+            k = k - 1
             color = get_color(pos.x, pos.y)  # 获取指定位置的色值
             sim = ColourDistance(previous_color, color)
             if sim > 200:
@@ -34,7 +36,7 @@ def run(pos):
                 sleep(random.randint(1, 2) + random.random())
                 keyboard.press_and_release('2')
 
-            sleep(0.1)
+            sleep(0.2)
         sleep(random.randint(1, 4) + random.random())
 
 
