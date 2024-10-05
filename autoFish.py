@@ -58,10 +58,6 @@ def getPos():
     return pos
 
 
-def clear():
-    pass
-
-
 if __name__ == '__main__':
     judge = 1
     keyboard.add_hotkey('esc', out)
