@@ -23,6 +23,8 @@ def run(pos):
     pyautogui.FAILSAFE = True  # 鼠标移动左上角终止程序
     sleep(10)
     previous_color = get_color(pos.x, pos.y)
+    print('初始颜色(np.array(' + '{}'.format(previous_color) + ')/255)')
+
     c = 0
     s = 0
     while judge != 0:
@@ -38,7 +40,7 @@ def run(pos):
             if sim > 200:
                 k = 0
                 s = s + 1
-                print("成功" + str(c) )
+                print("成功" + str(s) + "色差" + str(sim))
                 # print('tuple(np.array(' + '{}'.format(color) + ')/255)-' + '{}'.format(pos))
                 sleep((random.randint(1, 2) + random.random()) / 2)
                 keyboard.press_and_release('2')
