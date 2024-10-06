@@ -61,6 +61,18 @@ def out():
     judge = 0
 
 
+def wait():
+    print("暂停")
+    global stop
+    stop = 0
+
+
+def cont():
+    print("继续")
+    global stop
+    stop = 1
+
+
 def getPos():
     pos = pyautogui.position()  # 获取鼠标当前的位置
     return pos
@@ -68,7 +80,10 @@ def getPos():
 
 if __name__ == '__main__':
     judge = 1
+    stop = 1
     keyboard.add_hotkey('esc', out)
+    keyboard.add_hotkey('alt+1', wait)
+
     # recorded = keyboard.record(until='esc')
     # keyboard._hotkeys = {}
     sleep(0.5)
@@ -91,6 +106,9 @@ if __name__ == '__main__':
     previous_color = get_color(pos.x, pos.y)
     print('初始颜色(np.array(' + '{}'.format(previous_color) + ')/255)-' + '{}'.format(pos))
     while judge != 0:
+        while stop == 0:
+            keyboard.add_hotkey('alt+2', cont)
+            sleep(2)
         c = c + 1
         print("第" + str(c) + "次钓鱼")
         run()
