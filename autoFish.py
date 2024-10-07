@@ -9,24 +9,21 @@ import pyautogui
 
 user32 = ctypes.WinDLL('user32', use_last_error=True)
 gdi32 = ctypes.WinDLL('gdi32', use_last_error=True)
-hdc = user32.GetDC(None)
 
 
 def get_color(x, y):
     # gdi32 = windll.gdi32
     # user32 = windll.user32
-    #     hdc = user32.GetDC(None)  # 获取颜色值
+    hdc = user32.GetDC(None)  # 获取颜色值
     pixel = gdi32.GetPixel(hdc, x, y)  # 提取RGB值
     r = pixel & 0x0000ff
     g = (pixel & 0x00ff00) >> 8
     b = pixel >> 16
-    #     user32.ReleaseDC(None, hdc)
+    user32.ReleaseDC(None, hdc)
     return [r, g, b]
 
 
 def run():
-    pyautogui.FAILSAFE = True  # 鼠标移动左上角终止程序
-
     k = random.randint(150, 180)
 
     keyboard.press_and_release('1')
@@ -82,7 +79,7 @@ if __name__ == '__main__':
     # recorded = keyboard.record(until='esc')
     # keyboard._hotkeys = {}
     sleep(0.5)
-
+    pyautogui.FAILSAFE = True  # 鼠标移动左上角终止程序
     # if not 'pos' in locals():
     print("请先按alt选颜色点,然后按ctrl 10s后开始")
     keyboard.wait('alt')
