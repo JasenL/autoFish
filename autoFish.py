@@ -105,6 +105,7 @@ if __name__ == '__main__':
             keyboard.wait('alt+2')
             print("继续")
             stop = 1
+            sleep(0.5)
         c = c + 1
         print("第" + str(c) + "次钓鱼")
         run()
