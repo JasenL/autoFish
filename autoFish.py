@@ -15,12 +15,12 @@ hdc = user32.GetDC(None)
 def get_color(x, y):
     # gdi32 = windll.gdi32
     # user32 = windll.user32
-#     hdc = user32.GetDC(None)  # 获取颜色值
+    #     hdc = user32.GetDC(None)  # 获取颜色值
     pixel = gdi32.GetPixel(hdc, x, y)  # 提取RGB值
     r = pixel & 0x0000ff
     g = (pixel & 0x00ff00) >> 8
     b = pixel >> 16
-#     user32.ReleaseDC(None, hdc)
+    #     user32.ReleaseDC(None, hdc)
     return [r, g, b]
 
 
@@ -68,12 +68,6 @@ def wait():
     stop = 0
 
 
-def cont():
-    print("继续")
-    global stop
-    stop = 1
-
-
 def getPos():
     pos = pyautogui.position()  # 获取鼠标当前的位置
     return pos
@@ -107,9 +101,10 @@ if __name__ == '__main__':
     previous_color = get_color(pos.x, pos.y)
     print('初始颜色(np.array(' + '{}'.format(previous_color) + ')/255)-' + '{}'.format(pos))
     while judge != 0:
-        while stop == 0:
-            keyboard.add_hotkey('alt+2', cont)
-            sleep(2)
+        if stop == 0:
+            keyboard.wait('alt+2')
+            print("继续")
+            stop = 1
         c = c + 1
         print("第" + str(c) + "次钓鱼")
         run()
